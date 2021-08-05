@@ -25,13 +25,11 @@ Segmentation:
 2) Set up dependencies: 
 
     ```shell
-    conda install pytorch torchvision opencv 
-    pip install timm
+    pip install -r requirements.txt
     ```
 
    The code was tested with Python 3.7, PyTorch 1.8.0, OpenCV 4.5.1, and timm 0.4.5
 
-    
 ### Usage 
 
 1) Place one or more input images in the folder `input`.
@@ -48,9 +46,25 @@ Segmentation:
     python run_segmentation.py
     ```
 
-3) The results are written to the folder `output_monodepth` and `output_segmentation`, respectively.
+3) The results are written to the folder `output_monodepth` and `output_semseg`, respectively.
 
 Use the flag `-t` to switch between different models. Possible options are `dpt_hybrid` (default) and `dpt_large`.
+
+
+**Additional models:**
+
+- Monodepth finetuned on KITTI: [dpt_hybrid_kitti-cb926ef4.pt](https://github.com/intel-isl/DPT/releases/download/1_0/dpt_hybrid_kitti-cb926ef4.pt) [Mirror](https://drive.google.com/file/d/1-oJpORoJEdxj4LTV-Pc17iB-smp-khcX/view?usp=sharing)
+- Monodepth finetuned on NYUv2: [dpt_hybrid_nyu-2ce69ec7.pt](https://github.com/intel-isl/DPT/releases/download/1_0/dpt_hybrid_nyu-2ce69ec7.pt) [Mirror](https\://drive.google.com/file/d/1NjiFw1Z9lUAfTPZu4uQ9gourVwvmd58O/view?usp=sharing)
+
+Run with 
+
+```shell
+python run_monodepth -t [dpt_hybrid_kitti|dpt_hybrid_nyu] 
+```
+
+### Evaluation
+
+Hints on how to evaluate monodepth models can be found here: https://github.com/intel-isl/DPT/blob/main/EVALUATION.md
 
 
 ### Citation
